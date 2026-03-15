@@ -26,14 +26,14 @@ def extract_text_from_pdf(pdf_path):
 def generate_response(user_query, pdf_text):
     prompt = f"""
     Use the provided document text to answer the user's question.
-    If the document does not contain the answer, use logical reasoning.
+    If the document does not contain the answer, Dont answer it.
 
     Question: {user_query}
     Document Context: {pdf_text}
     Answer:
     """
     
-    response = co.generate(prompt=prompt, model='command-r-plus')
+    response = co.generate(prompt=prompt, model='command-r-plus-08-2024')
     return response.generations[0].text.strip() if response.generations else "No response generated."
 
 # Example usage
