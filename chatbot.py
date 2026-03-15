@@ -10,7 +10,7 @@ load_dotenv()
 COHERE_API_KEY = os.getenv("COHERE_API_KEY")
 if not COHERE_API_KEY:
     raise ValueError("Error: COHERE_API_KEY is not set. Please configure your API key.")
-co = cohere.Client(api_key=COHERE_API_KEY)
+co = cohere.ClientV2(api_key=COHERE_API_KEY)
 
 # Function to extract text from PDF
 def extract_text_from_pdf(pdf_path):
@@ -34,7 +34,7 @@ def generate_response(user_query, pdf_text):
     """
 
 response = co.chat(
-    model="command-r-plus-08-2024",
+    model="command-a-03-2025",
     message=prompt
 )
 
