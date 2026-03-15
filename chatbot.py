@@ -32,9 +32,13 @@ def generate_response(user_query, pdf_text):
     Document Context: {pdf_text}
     Answer:
     """
-    
-    response = co.generate(prompt=prompt, model='command-r-plus-08-2024')
-    return response.generations[0].text.strip() if response.generations else "No response generated."
+
+response = co.chat(
+    model="command-r-plus-08-2024",
+    message=prompt
+)
+
+return response.text.strip()
 
 # Example usage
 pdf_path = "herbal_medicine.pdf"  # Change this to your PDF file
